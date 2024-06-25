@@ -1,13 +1,13 @@
 import { response } from "express";
 import CategoriaModel from "../Models/CategoriaModel.js";
 
-class CategoriaController{
+class CategoriaController {
     constructor() {
     }
 
     create(req, res) {
-        const nome_categoria = req.body.nome;
-        ParafusoModel.create(nome_categoria).then(
+        const nome_categoria = req.body.nome_categoria;
+        CategoriaModel.create(nome_categoria).then(
             resposta => {
                 console.debug("Inserindo Categoria");
                 res.status(resposta[0]).json(resposta[1])
@@ -21,14 +21,14 @@ class CategoriaController{
     }
 
     read(req, res) {
-       CategoriaModel.read().then(
+        CategoriaModel.read().then(
             resposta => {
-                console.debug("Mostrando Categorias");
+                console.debug("Mostrando Categoria");
                 res.status(resposta[0]).json(resposta[1])
             }
         ).catch(
             resposta => {
-                console.debug("ERRO: Mostrando Categorias");
+                console.debug("ERRO: Mostrando Categoria");
                 res.status(resposta[0]).json(resposta[1])
             }
         )
@@ -40,12 +40,12 @@ class CategoriaController{
 
         CategoriaModel.update(id_categoria,nome_categoria).then(
             resposta => {
-                console.debug("Atualizando Categoria");
+                console.debug("Atualizando Categorias");
                 res.status(resposta[0]).json(resposta[1])
             }
         ).catch(
             resposta => {
-                console.debug("ERRO: Atualizando Categoria");
+                console.debug("ERRO: Atualizando Categorias");
                 res.status(resposta[0]).json(resposta[1])
             }
         )
